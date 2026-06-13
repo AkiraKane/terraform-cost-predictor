@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import pytest
 
-from cost_estimator import (
+from src.cost_estimator import (
     CostEstimate,
     CostReport,
     build_cost_report,

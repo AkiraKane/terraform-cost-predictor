@@ -7,8 +7,8 @@ import argparse
 import json
 import sys
 
-from cost_estimator import build_cost_report
-from llm import LLMClient
+from src.cost_estimator import build_cost_report
+from src.llm import LLMClient
 
 
 SYSTEM_PROMPT = (
