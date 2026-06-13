@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  terraform-cost-predictor:
+    build: .
+    volumes:
+      - ./plans:/app/plans:ro
+    environment:
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      - OLLAMA_MODEL=llama3
+      # - OPENAI_API_KEY=sk-...
+    entrypoint: ["python", "src/main.py", "--explain"]
+    command: ["/app/plans/plan.json"]
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+volumes:
+  ollama_data:
